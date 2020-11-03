@@ -1,4 +1,3 @@
-overviewpurpose-and-included-data
 location-data
 residential-locations
 other-locations
