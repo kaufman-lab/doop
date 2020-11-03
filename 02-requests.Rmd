@@ -1,0 +1,66 @@
+# 2. Exposure Assessment Core Data Request System {#requests}
+
+## 2.1 Placement of a Request
+
+Data requestors are strongly encouraged to complete a Statistical Analysis Plan before requesting data from the EAC.  A template for a Statistical Analysis Plan is included in Appendix A.  Once a data requestor has a clear idea of the data that he or she will need, that person should open an electronic Exposure Assessment Core Data Request.
+
+There are two possible forms that a requester can use.  If an analyst is conducting an epidemiological analysis, in which they will be analyzing the relationship between health outcome data and exposure estimates (either exposure model outputs, or estimates based on EPA's AQS data, or "distance-to-roadway" metrics), they should use this form:  https://catalyst.uw.edu/webq/survey/agassett/236007 
+
+If they are either developing an exposure model or doing any analyses that would require the use of raw monitoring or geographical data , then this form is more appropriate: https://catalyst.uw.edu/webq/survey/agassett/236008 
+
+Instructions are provided within the form.  Please contact Amanda Gassett at agassett@uw.edu with questions or feedback, or if you are uncertain of which form to use.  Analysts that are not certain what data to request are encouraged to consult with a member of the EAC data team.
+
+Data requests will be tracked by the project manager and within the database.  The Q:\ drive will contain a directory for data requests, and a subdirectory for each request with the output from the original electronic request and the queries used to generate the datasets.
+
+## 2.2 Maps of Participant-Identifying Information
+
+In some cases, data analysts may desire to include a map of participant locations or exposure modeling predictions in their papers or presentations.  It is important to remember that participants’ residential locations are considered participant-identifying information and are protected in accordance with the DMDA.  Any maps that will be displayed publically or viewed by anyone (including the analyst) who has not read and signed the DMDA must have participant locations jittered so that the actual residential locations are not identified.  Other data may be included on the maps as desired.  The outline of the desired map can be described in the final text box in the electronic data request form.
+
+## 2.3 Multiple Users of Requested Data, or Accessing an Existing Request
+
+In some cases, multiple analysts will be working with the same data and the same datasets.  Data users are discouraged from sharing data amongst themselves.  Data security issues are raised when participant identifying information is transmitted between users, and the EAC prefers to control the transmission of data for the protection of participant data.  Furthermore, all data issued by the EAC is subject to caveats, corrections, and updates.  The EAC can only ensure that analysts receive the appropriate communications related to the datasets that they are using if the EAC can track which analysts are using which datasets for which projects.  Data users are encouraged to contact the EAC if they wish to use existing datasets.  In most cases, these requests can be filled with very little delay.
+
+## 2.4 Fulfillment of a Request
+
+The electronic data request tool generates a report of the request and transmits it to the project manager.  As soon as the project manager reads the request, she will send the data requestor a confirmation email with a summary of the data that the EAC data team expects to provide.  The original request will be assigned an identification number and attached as a pdf.  All members of the EAC data team will receive a carbon copy of this message.  The project manager will bring the request to the EAC data team meeting.  The details of the request are discussed in the meeting, and the project manager will email the requestor with any clarifying questions.
+
+Data requestors will receive a notification from the QA Officer when the request is complete.  The notification will contain a summary of the data that was requested, a brief description of each file produced that includes the number of records that the files contain, and any caveats or additional information that the data team deems necessary.  The data requestor should retrieve and review the datasets promptly, and notify the data team of any problems.  If no problems are noted, the data requestor should send email confirmation to the project manager or QA Officer that the request can be closed.
+
+Requests will not be updated automatically when new database versions are released, but users will be notified when a new version of the data is available.  Data users whose analyses are still in progress should contact the EAC for updates.
+
+**Table 26.  Summary of data request file locations**
+
+<!--
+Type of File
+Type of Data User
+File Location
+Storage Timeframe
+Final, contains participant locations
+Final user, without access to MAIDS
+Transmitted by email as a password-protected zipped file
+Emails should be deleted as soon as possible
+Final, no participant locations
+Final user, without access to MAIDS
+Transmitted by email as a zipped file
+Emails should be deleted as soon as possible
+Final, contains participant locations
+Final user, with MAIDS access
+M:/MAIDS/Monitoring Database/Active Data Request - sensitive /<request>/ <filenames>
+7 days
+Final, no participant locations
+Final user, without MAIDS access
+M:/MAIDS/Active Data Request - Non sensitive /<request>/ <filenames>
+7 days
+Interim
+EAC data team member
+`Q:/eac_database/requests/<request>`
+Indefinite
+-->
+### 2.4.1  Data Request Fulfillment: Work Flow Details for Internal Users
+
+Roles for each data request are established in the EAC data team meeting.  Once a request is confirmed, one member will be responsible for writing the SQL queries to extract, compile, and process the data into the requested format.  A folder will be generated on Q:/ that will contain a copy of the original request, a copy of the SQL queries that generate the final dataset, and will be a temporary storage space for files related to the request.  These folders should be generated from the bash shell using `./make_request.sh <name> <description> <file format>`.
+
+The request will be filled using the bash shell script, `fill_request.sh`.  This script is located at `/var/local/QUTE/eac_database/requests`, and can be accessed from the bash shell with the command `./fill_request.sh <request_id_number>`.  This script runs the queries to generate datasets, creates a file of ‘metadata’ which contains the meanings of column names, and creates a record in the request table.  This table, housed inside the database, logs the name of the requestor, the date the request was filled, and the query used to fill the request. 
+
+A different member of the EAC data team will check the requested datasets for completeness and correctness.  Once the dataset generator notifies this person that the datasets are ready for the QA check, the QA auditor will perform their inspection and transfer the files to the appropriate location on the server.  The QA auditor will notify the project manager and QA officer that the request is complete, and the QA officer will notify the data requestor.  Once the data requestor expresses satisfaction with the data product, the request can be closed. 
+
