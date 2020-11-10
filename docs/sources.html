@@ -24,7 +24,7 @@
 <meta name="author" content="MESA Air" />
 
 
-<meta name="date" content="2020-11-02" />
+<meta name="date" content="2020-11-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,8 +53,74 @@
 <script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -252,9 +318,4191 @@ The term ‘city’ is vague in the context of our health studies and is to be a
 <p>PM2.5 data is collected by air quality agencies via several methods, and is consistently reported in units of µg/m3. Federal Reference Methods (FRM) are used to determine compliance with National Ambient Air Quality Standards (NAAQS). These data are considered to be of the most reliable quality, so only PM2.5 data collected by FRM monitors will be available in the EAC database. FRM methods are similar to one another, and involve collecting PM2.5 on a filter for 24 hours at a time. Most commonly, agencies measure PM2.5 one out of three days, with occasional data loss. The IMPROVE network collects PM data using FRM-type methods. A comparison of IMPROVE data to AQS FRM data collected concurrently at the same locations indicated that these methods were comparable enough to be considered equivalent. Occasionally, EPA audits of AQS data have found that measurement conditions did not meet the specifications required to validate those measurements for regulatory purposes. Many of these measurements were re-classified as “raw data” by the EPA. Although there is some evidence that these data are noisier than validated measurements, they are collected using reference methods and EPA staff believe that they are “potentially of quality.” We have included these measurements with a flag where no validated measurement was available.</p>
 <p>A number of users have asked if we will include data from Federal Equivalent Methods (FEMs). These include tapered element oscillating monitors (TEOMs) and beta attenuation monitors (BAMs), which are both one-hour integrated methods. When used for compliance purposes, these monitors are used alongside and corrected to filter methods. Uncorrected methods are not as well-correlated with the filter methods, show seasonal bias, and are relatively sparse in locations where we do not already have filter-based monitors. Our judgment has been that these monitors would add noise to our models rather than improve their spatial resolution.</p>
 <p>We note that some agencies may operate two monitors concurrently at the same location for quality control purposes. The EAC database is intended to house no more than one concentration for a single point in time and space. Therefore, AQS monitoring methodologies were ranked in terms of reliability based on best professional judgment. A detailed list of the rankings can be found in Tables 1 through 5. Data for the more reliable monitor was retained for time periods during which two monitors’ data were available from exactly the same location. If two co-located monitors used the same method, the data from the monitor with a more complete time series were retained. The alternative monitor’s data were inserted for time periods during which only that monitor’s data were available. Thus, a given location could have a single time series of monitoring data sourced from more than one monitor.</p>
-<p><strong>Table 1. Ranking of PM2.5 collection methods</strong></p>
-<p><strong>Table 4. Ranking of SO2 collection methods</strong></p>
-<p><strong>Table 5. Ranking of EC/OC collection methods</strong>*</p>
+<p><strong>Table 1. Ranking of PM25 collection methods</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Rank
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Parameter Code
+</th>
+<th style="text-align:left;">
+Method Code
+</th>
+<th style="text-align:left;">
+Recording Mode
+</th>
+<th style="text-align:left;">
+Collection Description
+</th>
+<th style="text-align:left;">
+Analysis Description
+</th>
+<th style="text-align:left;">
+Method Type
+</th>
+<th style="text-align:left;">
+Reference Method ID
+</th>
+<th style="text-align:left;">
+Equivalent Method
+</th>
+<th style="text-align:right;">
+Federal MDL
+</th>
+<th style="text-align:right;">
+Min Value
+</th>
+<th style="text-align:right;">
+Max Value
+</th>
+<th style="text-align:right;">
+Digits
+</th>
+<th style="text-align:left;">
+Round Truncate Indicator
+</th>
+<th style="text-align:left;">
+Units
+</th>
+<th style="text-align:left;">
+Table
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+145
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM-2.5 Sequential Air Sampler w/VSCC
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-1006-145
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 Sequential Air Sampler with BGI VSCC
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+118
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM2.5 Sequential w/WINS
+</td>
+<td style="text-align:left;">
+GRAVIMETRIC
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-0498-118
+</td>
+<td style="text-align:left;">
+R &amp; P CO PLUS MODEL 2025PM SEQ
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+144
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2000 PM-2.5 Audit Sampler w/VSCC
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-1006-144
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2000 Audit Sampler with BGI VSCC
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+143
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2000 PM-2.5 Air Sampler w/VSCC
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-1006-143
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2000 Air Sampler with BGI VSCC
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+117
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2000 PM2.5 Sampler w/WINS
+</td>
+<td style="text-align:left;">
+GRAVIMETRIC
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-0498-117
+</td>
+<td style="text-align:left;">
+R &amp; P CO Model 2000 PM-2.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+116
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+BGI Model PQ200 PM2.5 Sampler w/WINS
+</td>
+<td style="text-align:left;">
+GRAVIMETRIC
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-0498-116
+</td>
+<td style="text-align:left;">
+BGI INC Model PQ200 PM2.5
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+155
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Thermo Electron Model RAAS2.5-300 Sequential w/VSCC
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-1006-155
+</td>
+<td style="text-align:left;">
+Thermo Electron RAAS2.5-300 Sequential with BGI VSCC
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+142
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+BGI Models PQ200-VSCC or PQ200A-VSCC
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-1006-142
+</td>
+<td style="text-align:left;">
+BGI Models PQ200-VSCC or PQ200A-VSCC
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+129
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2000 PM-2.5 Audit w/WINS
+</td>
+<td style="text-align:left;">
+GRAVIMETRIC
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-0499-129
+</td>
+<td style="text-align:left;">
+R &amp; P CO Model 2000 PM-2.5 Audit
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+153
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Thermo Electron Model RAAS2.5-100 w/VSCC
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-1006-153
+</td>
+<td style="text-align:left;">
+Thermo Electron RAAS2.5-100 with BGI VSCC
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+154
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Thermo Electron Model RAAS2.5-200 Audit w/VSCC
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-10060154
+</td>
+<td style="text-align:left;">
+Thermo Electron RAAS2.5-200 Audit with BGI VSCC
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+135
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG-MASS100 Single PM2.5 Sampler
+</td>
+<td style="text-align:left;">
+GRAVIMETRIC
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-0400-135
+</td>
+<td style="text-align:left;">
+URG MASS100 Single PM2.5 Sampler
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+136
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG-MASS300 Sequential PM2.5 Sampler
+</td>
+<td style="text-align:left;">
+GRAVIMETRIC
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-0400-136
+</td>
+<td style="text-align:left;">
+URG MASS300 Sequential PM2.5 Sampler
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+128
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Andersen RAAS2.5-2000PM2.5 Aud w/WINS
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-0299-128
+</td>
+<td style="text-align:left;">
+Andersen RAAS2.5-200 PM2.5 Audit
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+119
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Andersen RAAS2.5-100 PM2.5 SAM w/WINS
+</td>
+<td style="text-align:left;">
+GRAVIMETRIC
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-0598-119
+</td>
+<td style="text-align:left;">
+Andersen RAAS2.5-100 PM2.5 SAM
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+120
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Andersen RAAS2.5-300 PM2.5 SEQ w/WINS
+</td>
+<td style="text-align:left;">
+GRAVIMETRIC
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-0598-120
+</td>
+<td style="text-align:left;">
+Andersen RAAS2.5-300 PM2.5 SEQ
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+123
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Thermo Env Model 605 CAPS
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFPS-1098-123
+</td>
+<td style="text-align:left;">
+THERMO ENVIR MODEL 605 CAPS
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+177
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Thermo Scientific Partisol 2000-D Dichot.
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQPS-0509-177
+</td>
+<td style="text-align:left;">
+Thermo Scientific Partisol 2000-D Dichot.
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:left;">
+PM2.5 - Local Conditions
+</td>
+<td style="text-align:left;">
+88101
+</td>
+<td style="text-align:left;">
+179
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Thermo Scientific Dichot. Partisol-Plus Model 2025-D Seq
+</td>
+<td style="text-align:left;">
+Gravimetric
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQPS-0509-179
+</td>
+<td style="text-align:left;">
+Thermo Scientific Dichot. Partisol-Plus Model 2025-D Seq
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+5000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+pm25
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 3. Ranking of O3 collection methods</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Rank
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Parameter Code
+</th>
+<th style="text-align:left;">
+Method Code
+</th>
+<th style="text-align:left;">
+Recording Mode
+</th>
+<th style="text-align:left;">
+Collection Description
+</th>
+<th style="text-align:left;">
+Analysis Description
+</th>
+<th style="text-align:left;">
+Method Type
+</th>
+<th style="text-align:left;">
+Reference Method ID
+</th>
+<th style="text-align:left;">
+Equivalent Method
+</th>
+<th style="text-align:right;">
+Federal MDL
+</th>
+<th style="text-align:right;">
+Min Value
+</th>
+<th style="text-align:right;">
+Max Value
+</th>
+<th style="text-align:right;">
+Digits
+</th>
+<th style="text-align:left;">
+Round Truncate Indicator
+</th>
+<th style="text-align:left;">
+Units
+</th>
+<th style="text-align:left;">
+Table
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+047
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+ULTRA VIOLET
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQOA-0880-047
+</td>
+<td style="text-align:left;">
+THERMO ELECTRON 49
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+103
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+OPEN PATH O3 ANALYZER
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQOA-0495-103
+</td>
+<td style="text-align:left;">
+OPSI MODEL AR 500 O3 ANALYZER
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+056
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+ULTRA VIOLET
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQOA-0383-056
+</td>
+<td style="text-align:left;">
+DASIBI 1008-AH
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+019
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+ULTRA VIOLET
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQOA-0577-019
+</td>
+<td style="text-align:left;">
+DASIBI 1003-AH–PC–RS
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+053
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+ULTRA VIOLET
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQOA-0881-053
+</td>
+<td style="text-align:left;">
+MONITOR LABS 8810
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+078
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+ULTRA VIOLET
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQOA-0990-078
+</td>
+<td style="text-align:left;">
+ENVIRONICS SERIES 300
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+087
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+ULTRA VIOLET ABSORPTION
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQOA-0992-087
+</td>
+<td style="text-align:left;">
+MODEL 400 OZONE ANALYZER
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+112
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+ULTRAVIOLET ABSORPTION
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQOA-0196-112
+</td>
+<td style="text-align:left;">
+HORIBA APOA-360
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+105
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+UV PHOTOMETRIC
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQOA-0895-105
+</td>
+<td style="text-align:left;">
+ENVIRONMENT SA MODEL Q341M
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Ozone
+</td>
+<td style="text-align:left;">
+44201
+</td>
+<td style="text-align:left;">
+020
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+CHEMILUMINESCENCE
+</td>
+<td style="text-align:left;">
+FRM
+</td>
+<td style="text-align:left;">
+RFOA-0577-020
+</td>
+<td style="text-align:left;">
+BECKMAN 950A
+</td>
+<td style="text-align:right;">
+0.005
+</td>
+<td style="text-align:right;">
+-0.004
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per million
+</td>
+<td style="text-align:left;">
+o3
+</td>
+</tr>
+</tbody>
+</table>
+<strong>Table 4. Ranking of SO2 collection methods</strong>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Rank
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Parameter Code
+</th>
+<th style="text-align:left;">
+Method Code
+</th>
+<th style="text-align:left;">
+Recording Mode
+</th>
+<th style="text-align:left;">
+Collection Description
+</th>
+<th style="text-align:left;">
+Analysis Description
+</th>
+<th style="text-align:left;">
+Method Type
+</th>
+<th style="text-align:left;">
+Reference Method ID
+</th>
+<th style="text-align:left;">
+Equivalent Method
+</th>
+<th style="text-align:right;">
+Federal MDL
+</th>
+<th style="text-align:right;">
+Min Value
+</th>
+<th style="text-align:right;">
+Max Value
+</th>
+<th style="text-align:right;">
+Digits
+</th>
+<th style="text-align:left;">
+Round Truncate Indicator
+</th>
+<th style="text-align:left;">
+Units
+</th>
+<th style="text-align:left;">
+Table
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+Sulfur dioxide
+</td>
+<td style="text-align:left;">
+42401
+</td>
+<td style="text-align:left;">
+560
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+Pulsed Fluorescent 43C-TLE/43i-TLE
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQSA-0486-060
+</td>
+<td style="text-align:left;">
+Thermo Electron 43c-TLE/43i-TLE
+</td>
+<td style="text-align:right;">
+0.2
+</td>
+<td style="text-align:right;">
+-4
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per billion
+</td>
+<td style="text-align:left;">
+so2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+Sulfur dioxide
+</td>
+<td style="text-align:left;">
+42401
+</td>
+<td style="text-align:left;">
+060
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+PULSED FLUORESCENT
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQSA-0486-060
+</td>
+<td style="text-align:left;">
+THERMO ELECTRON 43A, 43B, 43C
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+-4
+</td>
+<td style="text-align:right;">
+10000
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per billion
+</td>
+<td style="text-align:left;">
+so2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Sulfur dioxide
+</td>
+<td style="text-align:left;">
+42401
+</td>
+<td style="text-align:left;">
+009
+</td>
+<td style="text-align:left;">
+Continuous
+</td>
+<td style="text-align:left;">
+INSTRUMENTAL
+</td>
+<td style="text-align:left;">
+PULSED FLUORESCENT
+</td>
+<td style="text-align:left;">
+FEM
+</td>
+<td style="text-align:left;">
+EQSA-0276-009
+</td>
+<td style="text-align:left;">
+THERMO ELECTRON 43
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+-4
+</td>
+<td style="text-align:right;">
+1500
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+T
+</td>
+<td style="text-align:left;">
+Parts per billion
+</td>
+<td style="text-align:left;">
+so2
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 5. Ranking of EC/OC collection methods</strong></p>
+<p><em>Chemical Speciation Network (CSN) Temperature Protocol, Total Optical Transmittance</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Rank
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Parameter Code
+</th>
+<th style="text-align:left;">
+Method Code
+</th>
+<th style="text-align:left;">
+Recording Mode
+</th>
+<th style="text-align:left;">
+Collection Description
+</th>
+<th style="text-align:left;">
+Analysis Description
+</th>
+<th style="text-align:left;">
+Method Type
+</th>
+<th style="text-align:left;">
+Reference Method ID
+</th>
+<th style="text-align:left;">
+Equivalent Method
+</th>
+<th style="text-align:right;">
+Federal MDL
+</th>
+<th style="text-align:right;">
+Min Value
+</th>
+<th style="text-align:right;">
+Max Value
+</th>
+<th style="text-align:right;">
+Digits
+</th>
+<th style="text-align:left;">
+Round Truncate Indicator
+</th>
+<th style="text-align:left;">
+Units
+</th>
+<th style="text-align:left;">
+Table
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+EC CSN PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88307
+</td>
+<td style="text-align:left;">
+847
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM2.5 Sequential Quartz VSCC
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.098
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+OC CSN Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88305
+</td>
+<td style="text-align:left;">
+847
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM2.5 Sequential Quartz VSCC
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.098
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+EC CSN PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88307
+</td>
+<td style="text-align:left;">
+843
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM2.5 Sequential Quartz
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.098
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+OC CSN Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88305
+</td>
+<td style="text-align:left;">
+843
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM2.5 Sequential Quartz
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.098
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+EC CSN PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88307
+</td>
+<td style="text-align:left;">
+853
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R&amp;P MDL2300 PM2.5 Seq Spec Quartz
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.163
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+OC CSN Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88305
+</td>
+<td style="text-align:left;">
+853
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R&amp;P MDL2300 PM2.5 Seq Spec Quartz
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.163
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+EC CSN PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88307
+</td>
+<td style="text-align:left;">
+873
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG MASS450 Quartz VSCC
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.098
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+OC CSN Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88305
+</td>
+<td style="text-align:left;">
+873
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG MASS450 Quartz VSCC
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.098
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+EC CSN PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88307
+</td>
+<td style="text-align:left;">
+833
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG MASS450 Quartz WINS
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.098
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+OC CSN Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88305
+</td>
+<td style="text-align:left;">
+833
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG MASS450 Quartz WINS
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.098
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+EC CSN PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88307
+</td>
+<td style="text-align:left;">
+823
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Andersen RAAS Quartz
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.224
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+OC CSN Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88305
+</td>
+<td style="text-align:left;">
+823
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Andersen RAAS Quartz
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.224
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+EC CSN PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88307
+</td>
+<td style="text-align:left;">
+813
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Met One SASS Quartz
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.245
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+OC CSN Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88305
+</td>
+<td style="text-align:left;">
+813
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Met One SASS Quartz
+</td>
+<td style="text-align:left;">
+STN TOT
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.245
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.1
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>IMPROVE Temperature Protocol, Total Optical Reflectance</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Rank
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Parameter Code
+</th>
+<th style="text-align:left;">
+Method Code
+</th>
+<th style="text-align:left;">
+Recording Mode
+</th>
+<th style="text-align:left;">
+Collection Description
+</th>
+<th style="text-align:left;">
+Analysis Description
+</th>
+<th style="text-align:left;">
+Method Type
+</th>
+<th style="text-align:left;">
+Reference Method ID
+</th>
+<th style="text-align:left;">
+Equivalent Method
+</th>
+<th style="text-align:right;">
+Federal MDL
+</th>
+<th style="text-align:right;">
+Min Value
+</th>
+<th style="text-align:right;">
+Max Value
+</th>
+<th style="text-align:right;">
+Digits
+</th>
+<th style="text-align:left;">
+Round Truncate Indicator
+</th>
+<th style="text-align:left;">
+Units
+</th>
+<th style="text-align:left;">
+Table
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+859
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM2.5 Sequential Quartz VSCC
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.093
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+859
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM2.5 Sequential Quartz VSCC
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.402
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+857
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM2.5 Sequential Quartz
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.093
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+857
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R &amp; P Model 2025 PM2.5 Sequential Quartz
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.402
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+855
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R&amp;P MDL2300 PM2.5 Seq Spec Quartz
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.155
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+855
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+R&amp;P MDL2300 PM2.5 Seq Spec Quartz
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.670
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+877
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG MASS450 Quartz VSCC
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.025
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+877
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG MASS450 Quartz VSCC
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.025
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+829
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG 3000N w/Pall Quartz filter and Cyclone Inlet
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-(OP(TOR))=(88329+88330+88331-88328)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+838
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG 3000N w/Pall Quartz filter and Cyclone Inlet
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP (88329+88330+88331-88336)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+838
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG 3000N w/Pall Quartz filter and Cyclone Inlet
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP (88324+88325+88326+88327+88328)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+837
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG MASS450 Quartz WINS
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.025
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+837
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG MASS450 Quartz WINS
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.025
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+815
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Met One SASS Quartz
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.233
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+815
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Met One SASS Quartz
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+1.005
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+825
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Andersen RAAS Quartz
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.213
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+825
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+Andersen RAAS Quartz
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.918
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+809
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+IMPROVE Module C with Cyclone Inlet-Quartz Filter
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP (88329+88330+88331-88336)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+809
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+IMPROVE Module C with Cyclone Inlet-Quartz Filter
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP (88324+88325+88326+88327+88328)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+EC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88321
+</td>
+<td style="text-align:left;">
+805
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+IMPROVE
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.020
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+OC PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88320
+</td>
+<td style="text-align:left;">
+805
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+IMPROVE
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.087
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.2
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>IMPROVE Temperature Protocol, Total Optical Transmittance</em></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="sources.html#cb1-1"></a>method_tables<span class="op">$</span>ecoc<span class="fl">.3</span>  <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">kbl</span>()</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Rank
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Parameter Code
+</th>
+<th style="text-align:left;">
+Method Code
+</th>
+<th style="text-align:left;">
+Recording Mode
+</th>
+<th style="text-align:left;">
+Collection Description
+</th>
+<th style="text-align:left;">
+Analysis Description
+</th>
+<th style="text-align:left;">
+Method Type
+</th>
+<th style="text-align:left;">
+Reference Method ID
+</th>
+<th style="text-align:left;">
+Equivalent Method
+</th>
+<th style="text-align:right;">
+Federal MDL
+</th>
+<th style="text-align:right;">
+Min Value
+</th>
+<th style="text-align:right;">
+Max Value
+</th>
+<th style="text-align:right;">
+Digits
+</th>
+<th style="text-align:left;">
+Round Truncate Indicator
+</th>
+<th style="text-align:left;">
+Units
+</th>
+<th style="text-align:left;">
+Table
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+EC CSN_Rev Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88357
+</td>
+<td style="text-align:left;">
+838
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG 3000N w/Pall Quartz filter and Cyclone Inlet
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-OP (88329+88330+88331-88388)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+EC CSN_Rev Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88357
+</td>
+<td style="text-align:left;">
+840
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG 3000N w/Pall Quartz filter and Cyclone Inlet
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-(OP(TOT))=(88383+88384+88385-88388))
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+OC CSN_Rev Unadjusted PM2.5 LC TOT
+</td>
+<td style="text-align:left;">
+88355
+</td>
+<td style="text-align:left;">
+838
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG 3000N w/Pall Quartz filter and Cyclone Inlet
+</td>
+<td style="text-align:left;">
+OC1+OC2+OC3+OC4+OP (88374+88375+88376+88377+88388)
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.3
+</td>
+</tr>
+</tbody>
+</table>
+<p><em>Revised CSN Temperature Protocol, Total Optical Reflectance, Unadjusted</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+Rank
+</th>
+<th style="text-align:left;">
+Parameter
+</th>
+<th style="text-align:left;">
+Parameter Code
+</th>
+<th style="text-align:left;">
+Method Code
+</th>
+<th style="text-align:left;">
+Recording Mode
+</th>
+<th style="text-align:left;">
+Collection Description
+</th>
+<th style="text-align:left;">
+Analysis Description
+</th>
+<th style="text-align:left;">
+Method Type
+</th>
+<th style="text-align:left;">
+Reference Method ID
+</th>
+<th style="text-align:left;">
+Equivalent Method
+</th>
+<th style="text-align:right;">
+Federal MDL
+</th>
+<th style="text-align:right;">
+Min Value
+</th>
+<th style="text-align:right;">
+Max Value
+</th>
+<th style="text-align:right;">
+Digits
+</th>
+<th style="text-align:left;">
+Round Truncate Indicator
+</th>
+<th style="text-align:left;">
+Units
+</th>
+<th style="text-align:left;">
+Table
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:left;">
+EC CSN_Rev Unadjusted PM2.5 LC TOR
+</td>
+<td style="text-align:left;">
+88380
+</td>
+<td style="text-align:left;">
+831
+</td>
+<td style="text-align:left;">
+Intermittent
+</td>
+<td style="text-align:left;">
+URG 3000N w/Pall Quartz filter and Cyclone Inlet
+</td>
+<td style="text-align:left;">
+EC1+EC2+EC3-(OP(TOR))=(88383+88384+88385-88378))
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:left;">
+NA
+</td>
+<td style="text-align:right;">
+0.002
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+R
+</td>
+<td style="text-align:left;">
+Micrograms/cubic meter (LC)
+</td>
+<td style="text-align:left;">
+ecoc.4
+</td>
+</tr>
+</tbody>
+</table>
 <p>Elemental and organic carbon (EC/OC) are not listed as criteria air pollutants, and as such have no federal reference methods. Similar equipment is used for the collection of samples for EC/OC analysis as is used for the collection of PM2.5 for gravimetric analysis, so similar rankings were used to prioritize EC/OC methods. One issue that is important to consider when requesting EC/OC data is that these pollutants are operationally defined. Through 2007, EC/OC was primarily measured using the Chemical Speciation Network (CSN) temperature protocol. In 2007, many locations switched to using the IMPROVE temperature protocol. Comparisons between HEI/NPACT EC/OC measurements and monitoring network measurements by different protocols are presented in the XRF and EC/OC supplement to the QA report.</p>
 <p>AQS monitors collect hourly NOX and NO2 data by chemiluminescence, generally reported in units of ppm (and stored in the EAC database in units of ppb). All chemiluminescent methods are considered equivalent, so data for the monitor with the more complete time series were retained for days with two monitors’ data available. If a duplicate monitor existed, data from that monitor were inserted into the time series for time periods during which only that monitor’s data were available.</p>
 <p>Speciated data for the same species are rarely assessed using more than one method, so data for the monitor with the more complete time series were retained for days with two monitors’ data available. If a duplicate monitor existed, data from that monitor were inserted into the time series for time periods during which only that monitor’s data was available.</p>

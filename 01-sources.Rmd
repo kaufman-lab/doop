@@ -28,13 +28,70 @@ A number of users have asked if we will include data from Federal Equivalent Met
 
 We note that some agencies may operate two monitors concurrently at the same location for quality control purposes.  The EAC database is intended to house no more than one concentration for a single point in time and space.  Therefore, AQS monitoring methodologies were ranked in terms of reliability based on best professional judgment.  A detailed list of the rankings can be found in Tables 1 through 5.  Data for the more reliable monitor was retained for time periods during which two monitors’ data were available from exactly the same location.  If two co-located monitors used the same method, the data from the monitor with a more complete time series were retained.  The alternative monitor’s data were inserted for time periods during which only that monitor’s data were available.  Thus, a given location could have a single time series of monitoring data sourced from more than one monitor.  
 
-**Table 1.  Ranking of PM2.5 collection methods**
+
+```{r, collapse=TRUE, echo=FALSE, message=FALSE, warning=FALSE}
+aqs_methods_all <- readr::read_csv('data/methods_all.csv',
+col_types = readr::cols(`Federal MDL` = col_double(),
+  `Min Value` = col_double(),
+  `Max Value` = col_double(),
+  Digits = col_integer(), .default = readr::col_character())
+) %>% left_join(readr::read_csv('data/method_ranking.csv', col_types='cicc')) %>% arrange(Table, Rank, Parameter, `Method Code`) %>% select(Rank, -Table, everything())
+
+method_tables <- aqs_methods_all %>% filter(!is.na(Table)) %>% split(.$Table)
+                                   
+```
+
+**Table 1.  Ranking of PM25 collection methods**
+
+```{r, echo=FALSE}
+method_tables$pm25 %>% kbl()
+```
+
+
+**Table 3.  Ranking of O3 collection methods**
+
+```{r, echo=FALSE}
+method_tables$o3 %>% kbl()
+```
 
 
 **Table 4.  Ranking of SO2 collection methods**
+```{r, echo=FALSE}
+method_tables$so2 %>% kbl()
+
+```
 
 
-**Table 5.  Ranking of EC/OC collection methods***
+**Table 5.  Ranking of EC/OC collection methods**
+
+*Chemical Speciation Network (CSN) Temperature Protocol, Total Optical Transmittance*
+
+```{r, echo=FALSE}
+method_tables$ecoc.1 %>% kbl()
+```
+
+
+
+*IMPROVE Temperature Protocol, Total Optical Reflectance*
+
+```{r, echo=FALSE}
+method_tables$ecoc.2 %>% kbl()
+```
+
+
+*IMPROVE Temperature Protocol, Total Optical Transmittance*
+
+```{r}
+method_tables$ecoc.3  %>% kbl()
+```
+
+*Revised CSN Temperature Protocol, Total Optical Reflectance, Unadjusted*
+
+```{r, echo=FALSE}
+method_tables$ecoc.4 %>% kbl()
+
+```
+
 
 
 Elemental and organic carbon (EC/OC) are not listed as criteria air pollutants, and as such have no federal reference methods.  Similar equipment is used for the collection of samples for EC/OC analysis as is used for the collection of PM2.5 for gravimetric analysis, so similar rankings were used to prioritize EC/OC methods.  One issue that is important to consider when requesting EC/OC data is that these pollutants are operationally defined.  Through 2007, EC/OC was primarily measured using the Chemical Speciation Network (CSN) temperature protocol.  In 2007, many locations switched to using the IMPROVE temperature protocol.  Comparisons between HEI/NPACT EC/OC measurements and monitoring network measurements by different protocols are presented in the XRF and EC/OC supplement to the QA report.

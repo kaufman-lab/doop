@@ -26,6 +26,16 @@ install.packages("bookdown")
 ```
 -->
 
+
+```{r echo=FALSE, message=FALSE}
+library(tibble)
+library(dplyr)
+library(purrr)
+library(readr)
+library(stringr)
+library(kableExtra)
+library(magrittr)
+```
 # Overview/Purpose and Included Data {.unnumbered}
 
 The purpose of this document is to describe the collection, processing, and management of exposure data for the Multi-Ethnic Study of Atherosclerosis and Air Pollution (MESA Air) and associated environmental epidemiology studies.  The primary aims are: 1) to record the treatment of all of the Kaufman Lab’s environmental monitoring data prior to its upload to the Exposure Assessment Core’s (EAC) database; 2) to describe the content and processing of third-party (e.g., Air Quality Systems, NYCCAS) data; and 3) to describe the data request process.  Health data are collected and stored at study-specific coordinating centers, and documentation for these data handling procedures can be found in a separate Standard Operating Procedure (SOP) document.  The EAC does not fill data requests for health data.  We are currently distributing data from Revision 14 (Rev 14) of the EAC Database.  The data available in Rev 14 include:
